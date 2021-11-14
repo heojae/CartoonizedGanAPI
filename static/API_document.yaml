@@ -1,0 +1,27 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: "Cartoonize Gan API Swagger"
+  description: "Cartoonize Gan API Swagger"
+
+# Paths supported by the server application
+paths:
+  /cartoonize:
+    post:
+      operationId: "views.upload.upload_file"
+      consumes: ["multipart/form-data"]
+      produces: ["text/html"]
+      tags:
+        - "ROTATE"
+      summary: "Cartoonize Gan API Swagger"
+      parameters: [{
+                     name: image,
+                     required: false,
+                     in: formData,
+                     type: file
+                   }]
+      description: "흑백 이미지로 Style Transfer 하는 API."
+      responses:
+        200:
+          schema:
+            type: object
