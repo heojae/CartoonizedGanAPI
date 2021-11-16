@@ -12,7 +12,7 @@ paths:
       consumes: ["multipart/form-data"]
       produces: ["text/html"]
       tags:
-        - "ROTATE"
+        - "Cartoonize"
       summary: "Cartoonize Gan API Swagger"
       parameters: [{
                      name: image,
