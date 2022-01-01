@@ -8,7 +8,7 @@
 - `python app.py` 
 - `Swagger`-> http://localhost:8080/swagger/
 
-![swagger_example](./sample/swagger_example.gif)
+<img src="./sample/swagger_example.gif" alt="swagger_example" style="zoom:50%;" />
 
 - 개발용 시뮬레이션 Docker
 
