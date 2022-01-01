@@ -1,5 +1,5 @@
 # CartoonizedGanAPI
-`CartoonizedGan` 을 대상으로 `Flask` 를 활용하여, model 을 API 화 합니다.
+[CartoonizedGanExport](https://github.com/heojae/CartoonizedGanExport)  을 대상으로 `Flask` 를 활용하여, model 을 API 화 합니다.
 
 
 
