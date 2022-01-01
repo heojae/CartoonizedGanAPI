@@ -1,4 +1,4 @@
-Pillow==7.1.2
+Pillow>=8.3.2
 flask
 gunicorn
 flask_swagger_ui
