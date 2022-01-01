@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import numpy as np
 import torch
 import PIL
@@ -25,7 +27,7 @@ class JitCycleGANModel:
         self.model.eval()
 
     @staticmethod
-    def convert_pil_to_tensor(pil_image: PIL.Image.Image) -> torch.Tensor:
+    def convert_pil_to_tensor(pil_image: PIL.Image.Image) -> Tuple[torch.Tensor, PIL.Image.Image]:
 
         if pil_image.mode == "RGB":
             pass
@@ -35,22 +37,24 @@ class JitCycleGANModel:
             raise InvalidImageModeException
 
         image: torch.Tensor = JitCycleGANModel.transform(pil_image)  # [3, 224, 224]
-        return image.unsqueeze(dim=0)  # [1, 3, 224, 224]
+        return (image.unsqueeze(dim=0),  # [1, 3, 224, 224]
+                pil_image)
 
     @staticmethod
-    def convert_tensor_to_pil(tensor_image: torch.Tensor) -> PIL.Image.Image:
+    def convert_tensor_to_pil(tensor_image: torch.Tensor, origin_pil_image: PIL.Image.Image) -> PIL.Image.Image:
         # tensor_image : [1, 3, 256, 256]
         image_numpy = tensor_image[0].cpu().float().numpy()
         image_numpy = (np.transpose(image_numpy, (1, 2, 0)) + 1) / 2.0 * 255.0  # post-processing: transpose and scaling
-        return Image.fromarray(image_numpy.astype(np.uint8))
+        generated_pil_image = Image.fromarray(image_numpy.astype(np.uint8))
+        return generated_pil_image.resize(size=origin_pil_image.size)
 
     def inference(self, pil_image: PIL.Image.Image) -> PIL.Image.Image:
-        tensor_image = self.convert_pil_to_tensor(pil_image)
+        (tensor_image, origin_pil_image) = self.convert_pil_to_tensor(pil_image)
 
         with torch.no_grad():
             output_tensor: torch.Tensor = self.model(tensor_image)  # [1, 3, 256, 256]
 
-        return self.convert_tensor_to_pil(output_tensor)
+        return self.convert_tensor_to_pil(output_tensor, origin_pil_image)
 
 
 if __name__ == '__main__':
