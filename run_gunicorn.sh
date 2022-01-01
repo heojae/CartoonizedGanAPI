@@ -1,1 +1,1 @@
-gunicorn -k gthread --workers=2 --threads=4 --bind 0.0.0.0:8080 wsgi
+gunicorn -k gthread --workers=1 --threads=4 --bind 0.0.0.0:8080 wsgi
