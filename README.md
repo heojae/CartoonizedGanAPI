@@ -22,7 +22,9 @@ docker run -p 8080:8080 dev_cartoonize_api:1.0
 
 ```
 
+- `client.py` -> Request 보내는 포맷을 정리해두었습니다.
 
+  
 
 
 
