@@ -2,14 +2,15 @@ import PIL.ImageFile
 from PIL import Image
 from flask import Flask, request
 
-from config.exception import InvalidParameterException
+from config.exception import InvalidParameterException, apply_custom_error_handler
 from config.cache_policy import apply_cache_policy
 from config.swagger import apply_swagger
 from model import JitCycleGANModel
-from util import serve_pil_image
+from serve import FileSender
 
 app = Flask(__name__)
 apply_swagger(app)
+apply_custom_error_handler(app)
 apply_cache_policy(app)
 
 # --------------------------------------------------------------------------------------------
@@ -31,9 +32,9 @@ def cartoonize_api():
 
     output_pil_image = cg_model.inference(pil_image)
 
-    return serve_pil_image(output_pil_image)
+    return FileSender.send_pil_image(output_pil_image)
 
 
 # start flask app
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=False, use_reloader=False)
+    app.run(host='0.0.0.0', debug=False, use_reloader=False, port=8080)

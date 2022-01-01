@@ -1,0 +1,16 @@
+FROM python:3.8.3-slim
+
+WORKDIR /usr/src/app
+
+COPY ./requirements ./requirements
+
+RUN pip3 install --upgrade pip
+RUN pip3 install --no-cache-dir -r ./requirements/prod.txt
+RUN pip3 install --no-cache-dir torch==1.10.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 install --no-cache-dir torchvision==0.11.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+
+COPY ./ ./
+
+EXPOSE 8080
+
+CMD ["sh", "run_gunicorn.sh"]

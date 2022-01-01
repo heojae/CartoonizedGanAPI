@@ -14,6 +14,11 @@ class InvalidParameterException(CustomException):
     error_message = "잘못된 Request Format 입니다."
 
 
+class InvalidImageModeException(CustomException):
+    status_code = HTTPStatus.BAD_REQUEST
+    error_message = "RGB, L, RGBA 의 이미지가 아닙니다."
+
+
 def error_response(message, status_code):
     return jsonify({'message': message}), status_code
 

@@ -1,0 +1,5 @@
+Pillow==7.1.2
+flask
+gunicorn
+flask_swagger_ui
+flask_cors

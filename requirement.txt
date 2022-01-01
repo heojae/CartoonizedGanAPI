@@ -1,7 +1,0 @@
-Pillow==7.1.2
-torch==1.10.0
-torchvision==0.11.1
-flask
-gunicorn
-flask_swagger_ui
-flask_cors
