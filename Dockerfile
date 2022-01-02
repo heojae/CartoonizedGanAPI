@@ -1,6 +1,6 @@
 FROM python:3.8.3-slim
 
-WORKDIR /usr/src/app
+WORKDIR /
 
 COPY ./requirements ./requirements
 
@@ -12,5 +12,7 @@ RUN pip3 install --no-cache-dir torchvision==0.11.0+cpu -f https://download.pyto
 COPY ./ ./
 
 EXPOSE 8080
+
+RUN ["chmod", "+x", "run_gunicorn.sh"]
 
 CMD ["sh", "run_gunicorn.sh"]
