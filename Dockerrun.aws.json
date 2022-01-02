@@ -1,5 +1,8 @@
 {
   "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "your ecr repo docker image url"
+  },
   "Ports": [
     {
       "ContainerPort": 8080
@@ -7,8 +10,8 @@
   ],
   "Volumes": [
     {
-      "HostDirectory": "/usr/src/app",
-      "ContainerDirectory": "/usr/src/app"
+      "HostDirectory": "/",
+      "ContainerDirectory": "/"
     }
   ]
 }
