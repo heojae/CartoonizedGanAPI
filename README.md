@@ -48,9 +48,9 @@ docker run -p 8080:8080 dev_cartoonize_api:1.0
   
   ```
 
-- Docker 로 실행하고, client.py 를 실행시켜서, 제대로 동작하는 지 확인가능. 
+- Docker 로 실행하고, client.py 를 실행시켜서, 제대로 동작하는 지 확인. 
 
-- Elastic Beanstalk 를 활용하여, 배포하기 위해서 필요한 부분 구현완료. 
+- Elastic Beanstalk 를 활용하여, 배포하기 위해서 필요한 부분 구현완료. (`Dockerrun.aws.json`)
 
 
 
