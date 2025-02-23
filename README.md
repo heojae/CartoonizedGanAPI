@@ -1,4 +1,8 @@
 # CartoonizedGanAPI
+
+[https://applicable-ml.github.io/cartoonize_gan_api/](https://applicable-ml.github.io/cartoonize_gan_api/) 에 해당 내용을 정리해두었습니다
+
+
 [CartoonizedGanExport](https://github.com/heojae/CartoonizedGanExport)  을 대상으로 `Flask` 를 활용하여, model 을 API 화 합니다.
 
 
